@@ -7,13 +7,13 @@ def find_source(path, name):
             return os.path.join(root, name)
 
 
-file_name = "Sepsis Cases - Event Log.xes"
-project_path = os.getcwd()
+file_name = "Hospital_log_shortend.xes" #"Sepsis Cases - Event Log.xes"
+project_path = "/home/fabian/Github/Z_Anon_Evaluation/data_xes" #os.getcwd()
 
 source_path = find_source(project_path, file_name)
 activity = "concept:name"
 timestamp = "time:timestamp"
-source = "org:group"
+source = "org:group" # Use org:resource for bpi challenges and road traffic fine manageement
 case_id = "case:concept:name"
 req_cols = [case_id, activity, timestamp, source]
 

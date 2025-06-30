@@ -40,6 +40,19 @@ class TestZBalanced(unittest.TestCase):
 
         assert (log.equals(df_sorted))
 
+    def test_equal_log_with_using_same_parameters(self):
+        log = reader();
+        log = log.sort_values(by=[case_id, timestamp], kind="mergesort").reset_index(drop=True)
+
+        times = [td(hours=15), td(days=3), td(days=7)]
+        for i in range(1, 30):
+            print(f"Progress: {i}")
+            for t in times:
+                df_1 = pd.DataFrame(process(df=log.copy(), time_delta=t, z=i))
+                df_2 = pd.DataFrame(process(df=log.copy(), time_delta=t, z=i))
+
+                assert df_1.equals(df_2)
+
     def test_does_z_threshold_apply1(self):
         sample_data = {
             case_id: [1, 2, 3, 4, 5],

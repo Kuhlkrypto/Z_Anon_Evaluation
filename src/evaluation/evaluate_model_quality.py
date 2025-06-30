@@ -65,7 +65,6 @@ def evaluate_log_for_model_quality(o_log: pd.DataFrame, z_values: list[int], dt_
                 continue;
 
             # 4. evaluate
-
             fitness_ref = fitness_alignments(o_log, net, im, fm, multi_processing=multiprocessing)
             precision_ref = precision_alignments(o_log, net, im, fm, multi_processing=multiprocessing)
             generality_ref = generalization_tbr(o_log, net, im, fm)
